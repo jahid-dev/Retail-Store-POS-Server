@@ -1,8 +1,10 @@
 const express = require('express');
-const { getItems } = require('../controllers/itemsController');
+const { getAllItems, addItems, editItems, deleteItems } = require('../controllers/itemsController');
 const router = express.Router();
 
-router.get('/items', getItems);
-
+router.get('/items/get-all-items', getAllItems)
+router.post('/items/add-items',addItems)
+router.post('/items/edit-item',editItems)
+router.post('/items/delete-item',deleteItems)
 
 module.exports = router;

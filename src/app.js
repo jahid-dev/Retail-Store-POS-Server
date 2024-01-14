@@ -7,7 +7,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const  itemsRoute= require('./routes/itemsRoute');
-
+const billRoute = require('./routes/billRoute')
+const userRoute = require('./routes/userRoute')
 
 applyMiddleware(app);
 
@@ -16,7 +17,9 @@ app.get("/", (req, res) => {
   res.send("server is running....");
 });
 
-app.use(itemsRoute)
+app.use(itemsRoute);
+app.use(billRoute);
+app.use(userRoute);
 
 // handling all (get,post,update,delete.....) unhandled routes
 app.all("*", (req, res, next) => {

@@ -1,10 +1,8 @@
 const express = require("express");
 const applyMiddleware = require("./middlewares/applyMiddleware");
 const globalErrorHandler = require("./utils/globalErrorHandler");
-const connectDB = require("./db/connectDB");
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 5000;
 
 const  itemsRoute= require('./routes/itemsRoute');
 const billRoute = require('./routes/billRoute')
@@ -31,14 +29,4 @@ app.all("*", (req, res, next) => {
 // error handling middleware
 app.use(globalErrorHandler);
 
-
-const main=async ()=>{
-    await connectDB()
-    app.listen(port, () => {
-        console.log(`Server is running on port ${port}`);
-    });
-   
-}
-
-
-main()
+module.exports = app;
